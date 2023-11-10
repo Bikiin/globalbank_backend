@@ -1,0 +1,12 @@
+FROM openjdk:21-slim
+
+WORKDIR /roman-nums
+
+COPY /roman-nums/.mvn/ /roman-nums/.mvn
+
+COPY /roman-nums/mvnw /roman-nums/pom.xml ./
+RUN /roman-nums/mvnw dependency:go-offline
+ 
+COPY /roman-nums/src ./src
+
+CMD ["./mvnw", "spring-boot:run"]

@@ -1,0 +1,12 @@
+FROM openjdk:21-slim
+
+WORKDIR /form
+
+COPY /form/.mvn/ /form/.mvn
+
+COPY /form/mvnw /form/pom.xml ./
+RUN /form/mvnw dependency:go-offline
+ 
+COPY /form/src ./src
+ 
+CMD ["./mvnw", "spring-boot:run"]

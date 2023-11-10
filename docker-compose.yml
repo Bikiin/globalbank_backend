@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+    roman-nums:
+        build:
+            context: .
+            dockerfile: ./roman-nums/dockerfile
+        working_dir: /roman-nums
+        container_name: roman-nums
+        ports:
+            - 8080:8080
+        volumes:
+        - ./roman-nums:/roman-nums
+    form:
+        build:
+            context: .
+            dockerfile: ./form/dockerfile
+        working_dir: /form
+        container_name: form
+        ports:
+            - 8081:8081
+        volumes:
+        - ./form:/form
